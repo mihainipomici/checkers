@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class assign1 {
+    private static int player;
 
     public static void main(String[] args) {
 
@@ -13,9 +14,7 @@ public class assign1 {
                 {0, 2, 0, 2, 0, 2, 0, 2},
                 {2, 0, 2, 0, 2, 0, 2, 0}
         };
-        int player = 1;
-       int sx_global  = 1;
-       int sy_global = 2;
+        player = 1;
         Scanner s = new Scanner(System.in);
 
         printTable(board);
@@ -54,6 +53,11 @@ public class assign1 {
     // the initially selected piece is allowed to move
     public static void checkStart(int player, int[][] board, int sx, int sy) {
         //check if it's the right player's moove
+        if (player == 1){
+            System.out.println("Turn of player no. 1");
+        } else {
+            System.out.println("Turn of player no. 2");
+        }
 
 
 //        boolean start_cord = false;
@@ -78,11 +82,14 @@ public class assign1 {
                     System.out.println("New coordinate of piece to move.");
                     continue;
                 }
+
             } else {
                 System.out.println("Error");
                 ;
             }
             break;
+
+
         }
     }
 
@@ -106,16 +113,24 @@ public class assign1 {
                     if (Math.abs(diff_x) == 1) {
                         board[ny][nx] = player;
                         board[sy][sx] = 0;
-                        if (player == 1) {
-                            player = 2;
-                        } else {
-                            player = 1;
-                        }
+
+
                     } else {
+
+
                     }
                 }
+
+            }
+            if (player == 1) {
+                player = 2;
+
+            } else {
+                player = 1;
             }
             break;
         }
+
+
     }
 }
