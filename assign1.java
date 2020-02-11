@@ -14,11 +14,19 @@ public class assign1 {
                 {2, 0, 2, 0, 2, 0, 2, 0}
         };
         int player = 1;
-//        int sx_global  = 1;
-//        int yx_global = 2;
+       int sx_global  = 1;
+       int sy_global = 2;
+        Scanner s = new Scanner(System.in);
+
         printTable(board);
-        checkStart(player, board);
-        checkNext(player, board, sx, sy );
+        System.out.println("Turn of player no. 1");
+        System.out.println("Coordinate of piece to move");
+        System.out.println("  Enter X: ");
+        int sx = s.nextInt();
+        System.out.println("  Enter Y: ");
+        int sy = s.nextInt();
+        checkStart(player, board, sx,sy);
+        checkNext(player, board, sx, sy);
     }
 
     public static void printTable(int[][] board) {
@@ -44,18 +52,13 @@ public class assign1 {
 
     // This method will check the order of the turn of the player as well as if
     // the initially selected piece is allowed to move
-    public static void checkStart(int player, int[][] board) {
+    public static void checkStart(int player, int[][] board, int sx, int sy) {
         //check if it's the right player's moove
-        Scanner s = new Scanner(System.in);
+
 
 //        boolean start_cord = false;
         while (true) {
-            System.out.println("Turn of player no. 1");
-            System.out.println("Coordinate of piece to move");
-            System.out.println("  Enter X: ");
-            int sx = s.nextInt();
-            System.out.println("  Enter Y: ");
-            int sy = s.nextInt();
+
             if (sx > 7 || sy > 7) {
                 System.out.println("Wrong coordinate of piece to move. Reenter the coordinates.");
                 System.out.println("New coordinate of piece to move.");
@@ -75,14 +78,11 @@ public class assign1 {
                     System.out.println("New coordinate of piece to move.");
                     continue;
                 }
-
             } else {
                 System.out.println("Error");
                 ;
             }
             break;
-
-
         }
     }
 
@@ -108,20 +108,14 @@ public class assign1 {
                         board[sy][sx] = 0;
                         if (player == 1) {
                             player = 2;
-
                         } else {
                             player = 1;
                         }
-
                     } else {
-
-
                     }
                 }
             }
             break;
         }
-
-
     }
 }
